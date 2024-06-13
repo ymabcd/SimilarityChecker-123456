@@ -8,6 +8,7 @@ class TestSimilarityChecker(TestCase):
         super().setUp()
         self.checker = SimilarityChecker()
 
+
     def test_strings_have_same_lengths(self):
         self.assertEqual(60, self.checker.string_length_comparison("ASD", "DSA"))
 
@@ -20,3 +21,16 @@ class TestSimilarityChecker(TestCase):
 
     def test_string_length_difference_exceeds_double(self):
         self.assertEqual(0, self.checker.string_length_comparison("A", "BB"))
+
+    def test_strings_contain_same_letters(self):
+        self.assertEqual(40, self.checker.alpha_comparison("ASD", "DSA"))
+
+    def test_strings_have_unique_letters(self):
+        self.assertEqual(0, self.checker.alpha_comparison("A", "BB"))
+
+    def test_string_is_all_uppercase(self):
+        self.assertEqual(40, self.checker.alpha_comparison("AAABB", "BAA"))
+
+    def test_strings_contain_letters(self):
+        self.assertEqual(20, self.checker.alpha_comparison("AA", "AAE"))
+
