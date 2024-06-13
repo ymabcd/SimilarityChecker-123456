@@ -3,7 +3,8 @@ class SimilarityChecker:
         return first_length == second_length
 
     def compare_string_exceeds_double(self, first_length, second_length):
-        if self.compare_same_length(first_length, second_length * 2) or self.compare_same_length(second_length,                                                                                             first_length * 2):
+        if self.compare_same_length(first_length, second_length * 2) or self.compare_same_length(second_length,
+                                                                                                 first_length * 2):
             return True
         return False
 
@@ -16,3 +17,7 @@ class SimilarityChecker:
 
         if self.compare_string_exceeds_double(first_length, second_length):
             return 0
+
+        a, b = (first_length, second_length) if first_length > second_length else (second_length, first_length)
+        gap = a - b
+        return int((1 - gap/b)*60)
