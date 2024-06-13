@@ -18,4 +18,4 @@ class TestSimilarityChecker(TestCase):
         self.assertEqual(40, self.checker.alpha_comparison("AAABB", "BAA"))
 
     def test_strings_contain_letters(self):
-        self.assertEqual(20, self.checker.alpha_comparison("AA","AAE"))
+        self.assertEqual(20, self.checker.alpha_comparison("AA", "AAE"))

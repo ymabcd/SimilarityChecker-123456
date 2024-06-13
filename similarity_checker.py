@@ -1,3 +1,6 @@
+from collections import OrderedDict
+
+
 class SimilarityChecker:
     def alpha_comparison(self, first_string, second_string):
         if len(first_string) == len(second_string):
@@ -11,20 +14,10 @@ class SimilarityChecker:
         second_unique_string = self.get_unique_characters(second_string)
         sameCnt = self.count_common_characters(first_unique_string, second_unique_string)
 
-        return int(sameCnt/totalCnt*40)
+        return int(sameCnt / totalCnt * 40)
 
     def get_unique_characters(self, string):
-        seen = set()
-        result = []
-        for char in string:
-            if char not in seen:
-                seen.add(char)
-                result.append(char)
-        return result
+        return list(OrderedDict.fromkeys(string))
 
     def count_common_characters(self, first_unique_string, second_unique_string):
-        common_count = 0
-        for char in first_unique_string:
-            if char in second_unique_string:
-                common_count += 1
-        return common_count
+        return len(set(first_unique_string) & set(second_unique_string))
